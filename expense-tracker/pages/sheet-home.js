@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 export default function SheetHome() {
   const { query } = useRouter();
   var queryNames = query.names ? query.names : [];
-  let [members, setMembers] = useState([...query.names]);
+  let [members, setMembers] = useState([...queryNames]);
   let [items, setItems] = useState([]);
   let [tax, setTax] = useState({name: "Tax", price: 0, shares: new Array(members.length).fill(1)});
   let [tip, setTip] = useState({name: "Tip", price: 0, shares: new Array(members.length).fill(1)});
