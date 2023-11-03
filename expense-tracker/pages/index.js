@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { useState } from 'react';
-import ExpenseRow from '../components/expense-row';
+import { useEffect, useState } from 'react';
+import NameRow from '../components/name-row';
+import { useRouter } from 'next/router'
 
 export default function Home() {
-    let [items, setItems] = useState([{ name: "" }]);
+    const router = useRouter();
+    let [items, setItems] = useState([]);
 
     function insertRow() {
         setItems([...items, { name: "" }]);
@@ -20,6 +22,28 @@ export default function Home() {
         setItems(newItems);
     }
 
+    function goToSheet() {
+        if(!validateMemberNames()) return;
+        var names = items.map((name) => {
+            return name.name;
+        });
+        router.push({
+            pathname: '/sheet-home',
+            query: {
+                names: names
+            }
+        }, '/sheet-home');
+    }
+
+    function validateMemberNames() {
+        var ret = false;
+        for (var i = 0; i < items.length; i++) {
+            if(items[i].name == "") return false;
+            ret = true;
+        }
+        return ret;
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -33,7 +57,7 @@ export default function Home() {
                 </h1> <br />
 
                 <h2>
-                    Please select names of split members:
+                    Please input names of split members:
                 </h2>
 
                 <div className={styles.controls}>
@@ -47,14 +71,22 @@ export default function Home() {
                 </div>
 
                 <div className={styles.sheet}>
-                    <div className={styles.row}>
-                        <h3> S No. </h3>
-                        <h3> Member Name</h3>
-                    </div>
-                    {items.map(function (item, i) {
-                        return <ExpenseRow row={item} key={i} index={i} rowChange={rowChange} />;
-                    })}
+                    {
+                        items.length > 0 && 
+                        <div>
+                            <div className={styles.row}>
+                                <h3> S No. </h3>
+                                <h3> Member Name</h3>
+                            </div>
+                            {items.map(function (item, i) {
+                                return <NameRow row={item} key={i} index={i} rowChange={rowChange} />;
+                            })}
+                        </div>
+                    }
+
                 </div>
+                <br/>
+                { validateMemberNames() && <button onClick={goToSheet}>Next</button> }
             </main>
 
             <footer>

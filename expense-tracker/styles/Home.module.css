@@ -115,6 +115,13 @@
   margin: 8px;
 }
 
+.sheetheaderelement {
+  min-width: 5vw;
+  max-width: 5vw;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+}
+
 
 @media (max-width: 600px) {
   .grid {

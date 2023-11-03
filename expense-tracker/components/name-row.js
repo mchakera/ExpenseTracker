@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 
-export default function ExpenseRow(props) {
+export default function NameRow(props) {
     function nameChange(event) {
         var newRow = props.row;
         newRow.name = event.target.value;
