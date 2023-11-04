@@ -30,7 +30,7 @@ export default function Home() {
         router.push({
             pathname: '/sheet-home',
             query: {
-                names: names
+                names: [...names]
             }
         }, '/sheet-home');
     }
@@ -75,8 +75,8 @@ export default function Home() {
                         items.length > 0 && 
                         <div>
                             <div className={styles.row}>
-                                <h3> S No. </h3>
-                                <h3> Member Name</h3>
+                                <h3 className={styles.sheetheaderelement}> S No. </h3>
+                                <h3 className={styles.sheetheaderelement}> Member Name</h3>
                             </div>
                             {items.map(function (item, i) {
                                 return <NameRow row={item} key={i} index={i} rowChange={rowChange} />;

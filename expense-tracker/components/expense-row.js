@@ -27,11 +27,11 @@ export default function ExpenseRow(props) {
 
     return (
         <div className={styles.row}>
-            <p className={styles.sheetheaderelement}>{props.index + 1}.</p>
-            <input className={styles.sheetheaderelement} placeholder="Item name" value={props.row.name} onChange={nameChange} disabled={!editable}/>
-            <input className={styles.sheetheaderelement} value={props.row.price} onChange={priceChange} disabled={totalsRow}/>
+            <p className={styles.sheetrowelement}>{props.index + 1}.</p>
+            <input className={styles.sheetrowelement} placeholder="Item name" value={props.row.name} onChange={nameChange} disabled={!editable}/>
+            <input className={styles.sheetrowelement} value={props.row.price} onChange={priceChange} disabled={totalsRow}/>
             {(editable || totalsRow) && props.row.shares.map(function (share, i) {
-              return <input disabled={!editable} className={styles.sheetheaderelement} key={i} value={share} onChange={(event) => {shareChange(i, event.target.value)}}/>;
+              return <input disabled={!editable} className={styles.sheetrowelement} key={i} value={share} onChange={(event) => {shareChange(i, event.target.value)}}/>;
             })}
         </div>
     )

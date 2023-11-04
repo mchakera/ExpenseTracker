@@ -43,9 +43,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-top: 3rem;
 }
 
@@ -122,6 +122,12 @@
   overflow-wrap: break-word;
 }
 
+.sheetrowelement {
+  min-width: 5vw;
+  max-width: 5vw;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+}
 
 @media (max-width: 600px) {
   .grid {

@@ -141,6 +141,7 @@ export default function SheetHome() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          width: 80%;
         }
         footer {
           width: 100%;
