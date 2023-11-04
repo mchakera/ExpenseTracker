@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
+import { toFloat } from '../utils/utils.js';
 
 
 export default function ExpenseRow(props) {
-    console.log(props);
     var editable = props.editable != undefined ? props.editable == 'true' : true;
     var totalsRow = props.totalsRow != undefined ? props.totalsRow == 'true' : false;
     function nameChange(event) {
